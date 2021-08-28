@@ -1,7 +1,7 @@
 # Negai Rest
 
 
-![Logo](https://i.imgur.com/YnRSN3q.jpg)
+![Logo](https://i.imgur.com/1s3IcBD.png)
 
 
 -------
