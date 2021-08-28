@@ -1,7 +1,7 @@
 # Negai Rest
 
 
-![Logo](https://i.imgur.com/1s3IcBD.png)
+![Logo](https://i.imgur.com/YnRSN3q.jpg)
 
 
 -------
@@ -19,7 +19,7 @@
   
 -------
 ### Screenshots
-![App Screenshot](https://i.imgur.com/l18rIme.png)
+![App Screenshot](https://i.imgur.com/1s3IcBD.png)
 
 
 -------
