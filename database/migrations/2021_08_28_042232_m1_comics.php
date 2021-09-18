@@ -25,6 +25,7 @@ class M1Comics extends Migration
             $table->string('type');
             $table->string('edition');  
             $table->string('image');   
+            $table->string('state', 1); 
             $table->timestamps();  
 
             $table->foreign('tag_id')->references('id')->on('tags');

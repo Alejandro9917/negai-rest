@@ -13,16 +13,7 @@ class M2Carts extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('client_id');
-            $table->unsignedBigInteger('comic_id');
-            $table->boolean('state');
-            $table->timestamps();
-
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('comic_id')->references('id')->on('comics');
-        });
+        //
     }
 
     /**

@@ -19,7 +19,7 @@
   
 -------
 ### Screenshots
-![App Screenshot](https://i.imgur.com/1s3IcBD.png)
+![App Screenshot](https://i.imgur.com/FaiPjzO.png)
 
 
 -------
