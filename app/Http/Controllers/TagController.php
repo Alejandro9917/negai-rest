@@ -14,11 +14,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::get();
 
-        return response()->json([
-            'tag' => $tags,
-        ]);
+        return response()->json($tags);
     }
 
     /**
@@ -39,11 +37,19 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $tag = new Tag;
+        try{
+            $data = $request->validate([
+                'tag' => 'required|alpha_num|max:250',
+            ]);
 
-        $tag->tag =$request->tag;
+            $tag = Tag::create($data);
+            return response()->json($tag);
+        }
 
-        $tag->save();
+        catch(Exception $ex){
+            $error = array(['error' => 'No se ha podido completar: '.$ex]);
+            return response()->json($error);
+        }
     }
 
     /**
@@ -81,9 +87,21 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = Tag::where('id', '=', $id)->first();
+        try{
+            //Validating received data
+            $data = $request->validate([
+                'tag' => 'required|alpha_num|max:250',
+            ]);
 
-        $tag->update($request->all());
+            //Final object with data
+            $tag = Tag::where(['id' => $id])->update($data);
+            return response()->json($tag);
+        }
+
+        catch(Exception $ex){
+            $error = array(['error' => 'No se ha podido completar: '.$ex]);
+            return response()->json($error);
+        }
     }
 
     /**
@@ -94,6 +112,8 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::find($id);
+
+        $tag->delete();
     }
 }
