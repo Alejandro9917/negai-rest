@@ -39,7 +39,11 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = new Tag;
+
+        $tag->tag =$request->tag;
+
+        $tag->save();
     }
 
     /**
@@ -50,7 +54,11 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        $tags = Tag::where('id', $id)->get();
+
+        return response()->json([
+            'tag' => $tags,
+        ], 200);
     }
 
     /**
@@ -73,7 +81,9 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tag = Tag::where('id', '=', $id)->first();
+
+        $tag->update($request->all());
     }
 
     /**
