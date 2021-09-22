@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\CollectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //Rutas que retornan el controlador de Tag
 Route::resource('tags', TagController::class);
+
+//Rutas que retornan el controlador de Collections
+Route::resource('collections', CollectionController::class);
