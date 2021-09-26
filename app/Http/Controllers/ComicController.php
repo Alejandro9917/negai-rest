@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tag;
+use App\Models\Comic;
 
-class TagController extends Controller
+class ComicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::get();
+        $comic = Comic::get();
 
-        return response()->json($tags);
+        return response()->json($comic);
     }
 
     /**
@@ -39,11 +39,19 @@ class TagController extends Controller
     {
         try{
             $data = $request->validate([
-                'tag' => 'required|alpha_num|max:250',
+                'name' => 'required|alpha_num|max:250',
+                'author' => 'required|alpha_num|max:250',
+                'price' => 'required|max:250',
+                'description' => 'required|alpha_num|max:250',
+                'publisher' => 'required|alpha_num|max:250',
+                'type' => 'required|alpha_num|max:250',
+                'edition' => 'required|alpha_num|max:250',
+                'image' => 'required|alpha_num|max:250',
+                'state' => 'required|alpha_num|max:1',
             ]);
 
-            $tag = Tag::create($data);
-            return response()->json($tag);
+            $comic = Comic::create($data);
+            return response()->json($comic);
         }
 
         catch(Exception $ex){
@@ -60,11 +68,7 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        $tags = Tag::where('id', $id)->get();
-
-        return response()->json([
-            'tag' => $tags,
-        ], 200);
+        //
     }
 
     /**
@@ -89,11 +93,19 @@ class TagController extends Controller
     {
         try{
             $data = $request->validate([
-                'tag' => 'required|alpha_num|max:250',
+                'name' => 'required|alpha_num|max:250',
+                'author' => 'required|alpha_num|max:250',
+                'price' => 'required|max:250',
+                'description' => 'required|alpha_num|max:250',
+                'publisher' => 'required|alpha_num|max:250',
+                'type' => 'required|alpha_num|max:250',
+                'edition' => 'required|alpha_num|max:250',
+                'image' => 'required|alpha_num|max:250',
+                'state' => 'required|alpha_num|max:1',
             ]);
 
-            $tag = Tag::where(['id' => $id])->update($data);
-            return response()->json($tag);
+            $comic = Comic::where(['id' => $id])->update($data);
+            return response()->json($comic);
         }
 
         catch(Exception $ex){
@@ -110,8 +122,8 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::find($id);
+        $comic = Comic::find($id);
 
-        $tag->delete();
+        $comic->delete();
     }
 }

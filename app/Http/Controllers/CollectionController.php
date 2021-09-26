@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tag;
+use App\Models\Collection;
 
-class TagController extends Controller
+class CollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::get();
+        $collections = Collection::get();
 
-        return response()->json($tags);
+        return response()->json($collections);
     }
 
     /**
@@ -39,11 +39,11 @@ class TagController extends Controller
     {
         try{
             $data = $request->validate([
-                'tag' => 'required|alpha_num|max:250',
+                'name' => 'required|alpha_num|max:250',
             ]);
 
-            $tag = Tag::create($data);
-            return response()->json($tag);
+            $collection = Collection::create($data);
+            return response()->json($collection);
         }
 
         catch(Exception $ex){
@@ -60,11 +60,7 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        $tags = Tag::where('id', $id)->get();
-
-        return response()->json([
-            'tag' => $tags,
-        ], 200);
+        //
     }
 
     /**
@@ -89,11 +85,11 @@ class TagController extends Controller
     {
         try{
             $data = $request->validate([
-                'tag' => 'required|alpha_num|max:250',
+                'name' => 'required|alpha_num|max:250',
             ]);
 
-            $tag = Tag::where(['id' => $id])->update($data);
-            return response()->json($tag);
+            $collection = Collection::where(['id' => $id])->update($data);
+            return response()->json($collection);
         }
 
         catch(Exception $ex){
@@ -110,8 +106,8 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::find($id);
+        $collection = Collection::find($id);
 
-        $tag->delete();
+        $collection->delete();
     }
 }
