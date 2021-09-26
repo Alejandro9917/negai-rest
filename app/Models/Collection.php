@@ -12,4 +12,9 @@ class Collection extends Model
     protected $table = 'collections';
 
     protected $fillable = ['name'];
+
+    public function comics()
+    {
+        return $this->hasMany(Comic::class, 'tag_id', 'id');
+    }
 }

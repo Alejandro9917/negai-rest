@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Collection;
+use App\Models\Comic;
 
-class CollectionController extends Controller
+class ComicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $collections = Collection::get();
+        $comic = Comic::get();
 
-        return response()->json($collections);
+        return response()->json($comic);
     }
 
     /**
@@ -40,10 +40,18 @@ class CollectionController extends Controller
         try{
             $data = $request->validate([
                 'name' => 'required|alpha_num|max:250',
+                'author' => 'required|alpha_num|max:250',
+                'price' => 'required|max:250',
+                'description' => 'required|alpha_num|max:250',
+                'publisher' => 'required|alpha_num|max:250',
+                'type' => 'required|alpha_num|max:250',
+                'edition' => 'required|alpha_num|max:250',
+                'image' => 'required|alpha_num|max:250',
+                'state' => 'required|alpha_num|max:1',
             ]);
 
-            $collection = Collection::create($data);
-            return response()->json($collection);
+            $comic = Comic::create($data);
+            return response()->json($comic);
         }
 
         catch(Exception $ex){
@@ -86,10 +94,18 @@ class CollectionController extends Controller
         try{
             $data = $request->validate([
                 'name' => 'required|alpha_num|max:250',
+                'author' => 'required|alpha_num|max:250',
+                'price' => 'required|max:250',
+                'description' => 'required|alpha_num|max:250',
+                'publisher' => 'required|alpha_num|max:250',
+                'type' => 'required|alpha_num|max:250',
+                'edition' => 'required|alpha_num|max:250',
+                'image' => 'required|alpha_num|max:250',
+                'state' => 'required|alpha_num|max:1',
             ]);
 
-            $collection = Collection::where(['id' => $id])->update($data);
-            return response()->json($collection);
+            $comic = Comic::where(['id' => $id])->update($data);
+            return response()->json($comic);
         }
 
         catch(Exception $ex){
@@ -106,8 +122,8 @@ class CollectionController extends Controller
      */
     public function destroy($id)
     {
-        $collection = Collection::find($id);
+        $comic = Comic::find($id);
 
-        $collection->delete();
+        $comic->delete();
     }
 }

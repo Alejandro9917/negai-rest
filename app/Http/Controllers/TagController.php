@@ -88,12 +88,10 @@ class TagController extends Controller
     public function update(Request $request, $id)
     {
         try{
-            //Validating received data
             $data = $request->validate([
                 'tag' => 'required|alpha_num|max:250',
             ]);
 
-            //Final object with data
             $tag = Tag::where(['id' => $id])->update($data);
             return response()->json($tag);
         }

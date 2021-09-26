@@ -12,4 +12,9 @@ class Tag extends Model
     protected $table = 'tags';
 
     protected $fillable = ['tag'];
+
+    public function comics()
+    {
+        return $this->hasMany(Comic::class, 'tag_id', 'id');
+    }
 }

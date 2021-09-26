@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\ComicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +32,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-//Rutas que retornan el controlador de Tag
+//Rutas que retornan el controlador de Tags
 Route::resource('tags', TagController::class);
 
 //Rutas que retornan el controlador de Collections
 Route::resource('collections', CollectionController::class);
+
+//Rutas que retornan el controlador de Comics
+Route::resource('comics', ComicController::class);

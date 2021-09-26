@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TagSeeder::class,
             CollectionSeeder::class,
+            ComicSeeder::class,
         ]);
     }
 }
