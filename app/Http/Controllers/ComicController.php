@@ -14,9 +14,9 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comic = Comic::get();
+        $comics = Comic::get();
 
-        return response()->json($comic);
+        return response()->json($comics);
     }
 
     /**
@@ -38,19 +38,21 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         try{
-            $data = $request->validate([
-                'name' => 'required|alpha_num|max:250',
-                'author' => 'required|alpha_num|max:250',
-                'price' => 'required|max:250',
-                'description' => 'required|alpha_num|max:250',
-                'publisher' => 'required|alpha_num|max:250',
-                'type' => 'required|alpha_num|max:250',
-                'edition' => 'required|alpha_num|max:250',
-                'image' => 'required|alpha_num|max:250',
-                'state' => 'required|alpha_num|max:1',
+            $comic = $request->validate([
+                'tag_id' => 'required',
+                'collection_id' => 'required',
+                'name' => 'required|max:250|string',
+                'author' => 'required|max:250|string',
+                'price' => 'required|regex:/^\d+(.\d{1,2})?$/',
+                'description' => 'required|max:250|string',
+                'publisher' => 'required|max:250|string',
+                'type' => 'required|max:250|string',
+                'edition' => 'required|max:250|string',
+                'image' => 'required|max:250',
+                'state' => 'required|max:1|numeric',
             ]);
 
-            $comic = Comic::create($data);
+            $comic = Comic::create($comic);
             return response()->json($comic);
         }
 
@@ -68,7 +70,9 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        //
+        $comic = Comic::where('id', $id)->get();
+
+        return response()->json($comic);
     }
 
     /**
@@ -93,19 +97,21 @@ class ComicController extends Controller
     {
         try{
             $data = $request->validate([
-                'name' => 'required|alpha_num|max:250',
-                'author' => 'required|alpha_num|max:250',
-                'price' => 'required|max:250',
-                'description' => 'required|alpha_num|max:250',
-                'publisher' => 'required|alpha_num|max:250',
-                'type' => 'required|alpha_num|max:250',
-                'edition' => 'required|alpha_num|max:250',
-                'image' => 'required|alpha_num|max:250',
-                'state' => 'required|alpha_num|max:1',
+                'tag_id' => 'required',
+                'collection_id' => 'required',
+                'name' => 'required|max:250|string',
+                'author' => 'required|max:250|string',
+                'price' => 'required|regex:/^\d+(.\d{1,2})?$/',
+                'description' => 'required|max:250|string',
+                'publisher' => 'required|max:250|string',
+                'type' => 'required|max:250|string',
+                'edition' => 'required|max:250|string',
+                'image' => 'required|max:250',
+                'state' => 'required|max:1|numeric',
             ]);
 
             $comic = Comic::where(['id' => $id])->update($data);
-            return response()->json($comic);
+            return response()->json($data);
         }
 
         catch(Exception $ex){

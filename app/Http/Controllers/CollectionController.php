@@ -60,7 +60,9 @@ class CollectionController extends Controller
      */
     public function show($id)
     {
-        //
+        $collections = Collection::where('id', $id)->get();
+
+        return response()->json($collections);
     }
 
     /**
@@ -89,7 +91,7 @@ class CollectionController extends Controller
             ]);
 
             $collection = Collection::where(['id' => $id])->update($data);
-            return response()->json($collection);
+            return response()->json($data);
         }
 
         catch(Exception $ex){
