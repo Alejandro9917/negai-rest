@@ -13,7 +13,7 @@ class M2BillsComics extends Migration
      */
     public function up()
     {
-        Schema::create('bills_comics', function (Blueprint $table) {
+        /*Schema::create('bills_comics', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('bill_id');
             $table->unsignedBigInteger('comic_id');
@@ -21,7 +21,7 @@ class M2BillsComics extends Migration
 
             $table->foreign('bill_id')->references('id')->on('bills');
             $table->foreign('comic_id')->references('id')->on('comics');
-        });
+        });*/
     }
 
     /**

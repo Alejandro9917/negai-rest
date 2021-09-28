@@ -62,9 +62,7 @@ class TagController extends Controller
     {
         $tags = Tag::where('id', $id)->get();
 
-        return response()->json([
-            'tag' => $tags,
-        ], 200);
+        return response()->json($tags);
     }
 
     /**
@@ -75,7 +73,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -93,7 +91,7 @@ class TagController extends Controller
             ]);
 
             $tag = Tag::where(['id' => $id])->update($data);
-            return response()->json($tag);
+            return response()->json($data);
         }
 
         catch(Exception $ex){

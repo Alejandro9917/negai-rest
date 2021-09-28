@@ -13,13 +13,18 @@
 
 
 ------
+### Documentación
+[Documentación](https://documenter.postman.com/preview/13307056-a6adfaef-1c3a-4f0b-a125-c33c9d9a0438?environment=&versionTag=latest&apiName=CURRENT&version=latest&documentationLayout=classic-double-column&right-sidebar=303030&top-bar=FFFFFF&highlight=EF5B25)
+
+
+------
 ### Documento
 [Documento](https://udbedu-my.sharepoint.com/:b:/g/personal/mm180363_alumno_udb_edu_sv/ERU_GPZ7mxpCoUs3nMlY-3YBFZ5hZZMWQuDjGFLFswQ8Lw?e=yy6Euy)
 
 
 -------
-### Screenshots
-![App Screenshot](https://i.imgur.com/FaiPjzO.png)
+### Diagrama Relacional
+![App Screenshot](https://i.imgur.com/9ddp8G0.png)
 
 
 -------
