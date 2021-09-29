@@ -11,7 +11,7 @@ class Tag extends Model
 
     protected $table = 'tags';
 
-    protected $fillable = ['tag'];
+    protected $fillable = ['tag', 'created_at', 'updated_at'];
 
     public function comics()
     {
