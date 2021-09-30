@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use App\Models\Collection;
 
 class CollectionController extends Controller
@@ -26,7 +27,7 @@ class CollectionController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Collection/CreateCollection', ['collections' => Collection::all()]);
     }
 
     /**

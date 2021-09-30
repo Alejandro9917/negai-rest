@@ -35,8 +35,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //Rutas que retornan el controlador de Tags
 Route::resource('tags', TagController::class);
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/tags/create', [TagController::class, 'create'])->name('tags/create');
+
 //Rutas que retornan el controlador de Collections
 Route::resource('collections', CollectionController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/collections/create', [CollectionController::class, 'create'])->name('collections/create');
 
 //Rutas que retornan el controlador de Comics
 Route::resource('comics', ComicController::class);
