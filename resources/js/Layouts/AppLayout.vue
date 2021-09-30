@@ -22,6 +22,15 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('tags/create')" :active="route().current('tags/create')">
+                                    Tags
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('collections/create')" :active="route().current('collections/create')">
+                                    Colecciones
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('comics/create')" :active="route().current('comics/create')">
+                                    Comics
+                                </jet-nav-link>
                             </div>
                         </div>
 

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use App\Models\Comic;
+use App\Models\Collection;
+use App\Models\Tag;
 
 class ComicController extends Controller
 {
@@ -26,7 +29,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Comic/CreateComic', ['comics' => Comic::all(), 'tags' => Tag::all(), 'collections' => Collection::all()]);
     }
 
     /**
