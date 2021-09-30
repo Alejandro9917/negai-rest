@@ -28,6 +28,9 @@
                                 <jet-nav-link :href="route('collections/create')" :active="route().current('collections/create')">
                                     Colecciones
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('comics/create')" :active="route().current('comics/create')">
+                                    Comics
+                                </jet-nav-link>
                             </div>
                         </div>
 
