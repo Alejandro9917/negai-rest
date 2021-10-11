@@ -19,6 +19,7 @@ class ClientSeeder extends Seeder
             'name' => 'Erick',
             'last_name' => 'Arevalo',
             'phone' => '12345678',
+            'address' => 'En una casa por la montaña',
             'email' => 'erick@gmail.com',
             'password' => Hash::make('password'),
         ]);
