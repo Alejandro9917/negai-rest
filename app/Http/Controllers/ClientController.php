@@ -21,9 +21,14 @@ class ClientController extends Controller
         ])) {
             $client = auth()->client();
 
-            return redirect()->intended(url('/admin/dashboard'));
-        } else {
-            return redirect()->back()->withError('Credentials doesn\'t match.');
+            $message = array(['succes' => 'Login exitoso']);
+            return response()->json($message);
+        } 
+        
+        else 
+        {
+            $message = array(['succes' => 'Credenciales invalidas']);
+            return response()->json($message);
         }
     }
 
