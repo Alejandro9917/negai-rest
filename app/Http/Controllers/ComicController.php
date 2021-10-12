@@ -17,7 +17,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::get();
+        $comics = Comic::get()->load('collection');
 
         return response()->json($comics);
     }

@@ -18,7 +18,7 @@ class ComicSeeder extends Seeder
         DB::table('comics')->insert([
             'tag_id' => 1,
             'collection_id' => 1,
-            'name' => 'Tomo 1:',
+            'name' => 'Tomo 1',
             'author' => 'Haruko Ichikawa',
             'price' => '19.99',
             'description' => 'Sinopsis de Houseki no Kuni',

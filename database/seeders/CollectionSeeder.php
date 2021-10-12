@@ -16,7 +16,7 @@ class CollectionSeeder extends Seeder
     public function run()
     {
         DB::table('collections')->insert([
-            'name' => 'Monster',
+            'name' => 'Houseki no Kuni',
         ]);
 
         DB::table('collections')->insert([
