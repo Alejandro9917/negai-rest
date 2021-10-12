@@ -37,3 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/collections/create', [Col
 //Rutas que retornan el controlador de Comics
 Route::resource('comics', ComicController::class);
 Route::middleware(['auth:sanctum', 'verified'])->get('/comics/create', [ComicController::class, 'create'])->name('comics/create');
+
+//Rutas que retornan el controlador de clientes
+Route::resource('clients', ClientController::class);
+Route::middleware(['auth:sanctum', 'verified'])->get('/clients', [ClientController::class, 'index'])->name('clients.view');

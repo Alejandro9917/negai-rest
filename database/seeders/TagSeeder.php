@@ -16,23 +16,7 @@ class TagSeeder extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
-            'tag' => Str::random(10),
-        ]);
-
-        DB::table('tags')->insert([
-            'tag' => Str::random(10),
-        ]);
-
-        DB::table('tags')->insert([
-            'tag' => Str::random(10),
-        ]);
-
-        DB::table('tags')->insert([
-            'tag' => Str::random(10),
-        ]);
-
-        DB::table('tags')->insert([
-            'tag' => Str::random(10),
+            'tag' => 'Ciencia Ficción',
         ]);
     }
 }

@@ -17,7 +17,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::get()->load('collection');
+        $comics = Comic::get()->load(['collection', 'tag']);
 
         return response()->json($comics);
     }
@@ -73,7 +73,7 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        $comic = Comic::where('id', $id)->get()->load('collection');
+        $comic = Comic::where('id', $id)->get()->load(['collection', 'tag']);
 
         return response()->json($comic);
     }

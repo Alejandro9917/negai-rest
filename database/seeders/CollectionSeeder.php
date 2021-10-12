@@ -18,21 +18,5 @@ class CollectionSeeder extends Seeder
         DB::table('collections')->insert([
             'name' => 'Houseki no Kuni',
         ]);
-
-        DB::table('collections')->insert([
-            'name' => 'Houseki no Kuni',
-        ]);
-
-        DB::table('collections')->insert([
-            'name' => 'Naruto',
-        ]);
-        
-        DB::table('collections')->insert([
-            'name' => 'Spider Man',
-        ]);
-
-        DB::table('collections')->insert([
-            'name' => 'Vinland Saga',
-        ]);
     }
 }

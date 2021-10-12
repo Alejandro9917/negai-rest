@@ -11,9 +11,9 @@ class Client extends Authenticatable
     use HasApiTokens;
     use HasFactory;
 
-    protected $table = 'collections';
+    protected $table = 'clients';
 
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'last_name', 'email', 'phone', 'address', 'password'];
 
     protected $hidden = ['password','remember_token'];
 

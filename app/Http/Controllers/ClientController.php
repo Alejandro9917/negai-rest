@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
-use App\Http\Requests\Auth\LoginRequest;
+use Inertia\Inertia;
+use App\Models\Client;
+use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
@@ -40,7 +42,8 @@ class ClientController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        $message = array(['logout' => 'Se ha cerrado la sesión']);
+        return response()->json($message);
     }
 
     /**
@@ -50,7 +53,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::get();
+        return Inertia::render('Client/ViewClient', ['clients' => $clients]);
     }
 
     /**
@@ -60,7 +64,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -71,7 +75,33 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $client = $request->validate([
+                'name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'password' => 'required',
+            ]);
+
+            $client = [
+                'name' => $request->name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'password' => Hash::make($request->password),
+            ];
+
+            $client = Client::create($client);
+            return response()->json($client);
+        }
+
+        catch(Exception $ex){
+            $error = array(['error' => 'No se ha podido completar: '.$ex]);
+            return response()->json($error);
+        }
     }
 
     /**

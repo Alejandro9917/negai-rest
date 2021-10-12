@@ -15,5 +15,6 @@ class VerifyCsrfToken extends Middleware
         'tag*',
         'collection*',
         'comics*',
+        'client*',
     ];
 }
