@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ComicController;
@@ -42,3 +43,6 @@ Route::get('comic/random',  [ComicController::class, 'randomComic'])->name('comi
 //Rutas que retornan el controlador de clientes
 Route::resource('clients', ClientController::class);
 Route::middleware(['auth:sanctum', 'verified'])->get('/clients', [ClientController::class, 'index'])->name('clients.view');
+
+//Rutas que retornan el controlador de facturas
+Route::resource('bills', BillController::class);

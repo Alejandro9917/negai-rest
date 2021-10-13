@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CollectionSeeder::class,
             ComicSeeder::class,
             ClientSeeder::class,
+            BillSeeder::class,
         ]);
     }
 }
