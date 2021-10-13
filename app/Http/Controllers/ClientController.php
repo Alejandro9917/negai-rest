@@ -41,7 +41,7 @@ class ClientController extends Controller
 
         $request->session()->regenerateToken();
 
-        $message = array(['logout' => 'Se ha cerrado la sesión']);
+        $message = array(['logout' => 'true']);
         return response()->json($message);
     }
 

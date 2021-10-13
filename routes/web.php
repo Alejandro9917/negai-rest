@@ -46,3 +46,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/clients', [ClientControll
 
 //Rutas que retornan el controlador de facturas
 Route::resource('bills', BillController::class);
+Route::get('client/bills/{client_id}', [BillController::class, 'clientBills']);
+Route::get('/bill/client/{client_id}', [BillController::class, 'billClient'])->name('bill.client');
