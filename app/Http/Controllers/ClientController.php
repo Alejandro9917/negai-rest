@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
-        $this->validate($request, [
+        $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if(auth()->guard('client')->attempt([
+        /*if(auth()->guard('client')->attempt([
             'email' => $request->email,
             'password' => $request->password,
         ])) {
@@ -30,6 +30,21 @@ class ClientController extends Controller
         else 
         {
             $message = array(['succes' => 'Credenciales invalidas']);
+            return response()->json($message);
+        }*/
+
+        if(Auth::guard('client')->attempt($credentials))
+        {
+            $request->session()->regenerate();
+
+            $client = Client::where('email', $request->email)->first();
+            $message = array(['succes' => 'Login exitoso', $client]);
+            return response()->json($message);
+        }
+
+        else 
+        {
+            $message = array(['error' => 'Credenciales invalidas']);
             return response()->json($message);
         }
     }
@@ -112,7 +127,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Client::where('id', $id)->first();
+        return response()->json($client);
     }
 
     /**
@@ -135,7 +151,33 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $client = $request->validate([
+                'name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'password' => 'required',
+            ]);
+
+            $client = [
+                'name' => $request->name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'password' => Hash::make($request->password),
+            ];
+
+            $client = Client::where('id', $id)->update($client);
+            return response()->json($client);
+        }
+
+        catch(Exception $ex){
+            $error = array(['error' => 'No se ha podido completar: '.$ex]);
+            return response()->json($error);
+        }
     }
 
     /**
