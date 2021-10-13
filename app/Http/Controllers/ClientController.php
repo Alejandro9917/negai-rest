@@ -17,34 +17,18 @@ class ClientController extends Controller
             'password' => 'required',
         ]);
 
-        /*if(auth()->guard('client')->attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-        ])) {
-            $client = auth()->client();
-
-            $message = array(['succes' => 'Login exitoso']);
-            return response()->json($message);
-        } 
-        
-        else 
-        {
-            $message = array(['succes' => 'Credenciales invalidas']);
-            return response()->json($message);
-        }*/
-
         if(Auth::guard('client')->attempt($credentials))
         {
             $request->session()->regenerate();
 
             $client = Client::where('email', $request->email)->first();
-            $message = array(['succes' => true, $client]);
+            $message = array(['success' => true, $client]);
             return response()->json($message);
         }
 
         else 
         {
-            $message = array(['error' => false]);
+            $message = array(['success' => false]);
             return response()->json($message);
         }
     }
@@ -151,6 +135,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //return $request;
         try{
             $client = $request->validate([
                 'name' => 'required',
@@ -158,7 +143,6 @@ class ClientController extends Controller
                 'email' => 'required',
                 'phone' => 'required',
                 'address' => 'required',
-                'password' => 'required',
             ]);
 
             $client = [
@@ -167,11 +151,11 @@ class ClientController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,
-                'password' => Hash::make($request->password),
             ];
 
             $client = Client::where('id', $id)->update($client);
-            return response()->json($client);
+            $message = array(['success' => 'Se ha actualizado el usuario']);
+            return response()->json($message);
         }
 
         catch(Exception $ex){
