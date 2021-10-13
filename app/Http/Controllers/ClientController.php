@@ -12,31 +12,24 @@ class ClientController extends Controller
 {
     public function login(Request $request)
     {
-        try{
-            $credentials = $request->validate([
-                'email' => 'required|email',
-                'password' => 'required',
-            ]);
-    
-            if(Auth::guard('client')->attempt($credentials))
-            {
-                $request->session()->regenerate();
-    
-                $client = Client::where('email', $request->email)->first();
-                $message = array(['success' => true, $client]);
-                return response()->json($message);
-            }
-    
-            else 
-            {
-                $message = array(['success' => false]);
-                return response()->json($message);
-            }
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if(Auth::guard('client')->attempt($credentials))
+        {
+            $request->session()->regenerate();
+
+            $client = Client::where('email', $request->email)->first();
+            $message = array(['success' => true, $client]);
+            return response()->json($message);
         }
 
-        catch(Exception $ex){
-            $error = array(['error' => 'No se ha podido completar: ']);
-            return response()->json($error);
+        else 
+        {
+            $message = array(['success' => false]);
+            return response()->json($message);
         }
     }
 
