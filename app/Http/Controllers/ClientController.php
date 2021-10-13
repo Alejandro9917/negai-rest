@@ -38,13 +38,13 @@ class ClientController extends Controller
             $request->session()->regenerate();
 
             $client = Client::where('email', $request->email)->first();
-            $message = array(['succes' => 'Login exitoso', $client]);
+            $message = array(['succes' => true, $client]);
             return response()->json($message);
         }
 
         else 
         {
-            $message = array(['error' => 'Credenciales invalidas']);
+            $message = array(['error' => false]);
             return response()->json($message);
         }
     }
