@@ -14,7 +14,7 @@ class BillSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('clients')->insert([
+        DB::table('bills')->insert([
             'client_id' => '1',
             'comic_id' => '1',
             'state' => '1',
