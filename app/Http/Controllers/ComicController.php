@@ -21,7 +21,7 @@ class ComicController extends Controller
     {
         $number = Comic::get()->count();
         $random = rand(1, $number);
-        $comic = Comic::load(['collection', 'tag'])->where('id', $random)->first();
+        $comic = Comic::where('id', $random)->first()->load(['collection', 'tag']);
         return response()->json($comic);
     }
 
