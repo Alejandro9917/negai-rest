@@ -17,12 +17,24 @@ class ComicController extends Controller
         return response()->json($comics);
     }
 
+    public function recentComics()
+    {
+        $comics = Comic::orderBy('id', 'desc')->take(6)->get()->load(['collection', 'tag']);
+        return response()->json($comics);
+    }
+
     public function randomComic()
     {
         $number = Comic::get()->count();
         $random = rand(1, $number);
         $comic = Comic::where('id', $random)->first()->load(['collection', 'tag']);
         return response()->json($comic);
+    }
+
+    public function collectionComics($collection_id)
+    {
+        $comics = Comic::where('collection_id', $collection_id)->take(4)->get()->load(['collection', 'tag']);
+        return response()->json($comics);
     }
 
     public function create()

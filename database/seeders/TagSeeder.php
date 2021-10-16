@@ -18,5 +18,9 @@ class TagSeeder extends Seeder
         DB::table('tags')->insert([
             'tag' => 'Ciencia Ficción',
         ]);
+
+        DB::table('tags')->insert([
+            'tag' => 'Romance',
+        ]);
     }
 }

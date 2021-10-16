@@ -39,6 +39,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/collections/create', [Col
 Route::resource('comics', ComicController::class);
 Route::middleware(['auth:sanctum', 'verified'])->get('/comics/create', [ComicController::class, 'create'])->name('comics/create');
 Route::get('comic/random',  [ComicController::class, 'randomComic'])->name('comic.random');
+Route::get('collection/comics/{collection_id}',  [ComicController::class, 'collectionComics'])->name('comic.collection');
+Route::get('recent/comics',  [ComicController::class, 'recentComics'])->name('comic.recent');
 
 //Rutas que retornan el controlador de clientes
 Route::resource('clients', ClientController::class);
