@@ -17,7 +17,7 @@ class M1Bills extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('comic_id');
-            $table->boolean('state');
+            $table->smallInteger('state');
             $table->timestamps();
 
             $table->foreign('client_id')->references('id')->on('clients');

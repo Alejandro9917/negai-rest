@@ -16,23 +16,27 @@ class CollectionSeeder extends Seeder
     public function run()
     {
         DB::table('collections')->insert([
-            'name' => 'Monster',
-        ]);
-
-        DB::table('collections')->insert([
             'name' => 'Houseki no Kuni',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
         DB::table('collections')->insert([
-            'name' => 'Naruto',
-        ]);
-        
-        DB::table('collections')->insert([
-            'name' => 'Spider Man',
+            'name' => 'Monster',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
         DB::table('collections')->insert([
             'name' => 'Vinland Saga',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('collections')->insert([
+            'name' => 'Kaguya Sama: Love is War',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
     }
 }

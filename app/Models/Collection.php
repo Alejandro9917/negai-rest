@@ -15,6 +15,6 @@ class Collection extends Model
 
     public function comics()
     {
-        return $this->hasMany(Comic::class, 'tag_id', 'id');
+        return $this->hasMany(Comic::class, 'collection_id', 'id');
     }
 }

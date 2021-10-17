@@ -16,23 +16,27 @@ class TagSeeder extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
-            'tag' => Str::random(10),
+            'tag' => 'Ciencia Ficción',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
         DB::table('tags')->insert([
-            'tag' => Str::random(10),
+            'tag' => 'Seinen',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
         DB::table('tags')->insert([
-            'tag' => Str::random(10),
+            'tag' => 'Acción',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
         DB::table('tags')->insert([
-            'tag' => Str::random(10),
-        ]);
-
-        DB::table('tags')->insert([
-            'tag' => Str::random(10),
-        ]);
+            'tag' => 'Romance',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);        
     }
 }

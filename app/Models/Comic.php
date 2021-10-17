@@ -11,8 +11,7 @@ class Comic extends Model
 
     protected $table = 'comics';
 
-    /* protected $fillable = ['tag_id', 'collection_id', 'name', 'author', 'price', 'description', 'publisher', 'type', 'edition', 'image', 'state']; */
-    protected $guarded = [];
+    protected $fillable = ['tag_id', 'collection_id', 'name', 'author', 'price', 'description', 'publisher', 'type', 'edition', 'image', 'state', 'created_at', 'updated_at']; 
 
     public function tag()
     {

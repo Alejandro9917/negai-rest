@@ -10,34 +10,38 @@ use App\Models\Tag;
 
 class ComicController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $comics = Comic::get();
+        $comics = Comic::get()->load(['collection', 'tag']);
 
         return response()->json($comics);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function recentComics()
+    {
+        $comics = Comic::orderBy('id', 'desc')->take(6)->get()->load(['collection', 'tag']);
+        return response()->json($comics);
+    }
+
+    public function randomComic()
+    {
+        $number = Comic::get()->count();
+        $random = rand(1, $number);
+        $comic = Comic::where('id', $random)->first()->load(['collection', 'tag']);
+        return response()->json($comic);
+    }
+
+    public function collectionComics($collection_id)
+    {
+        $comics = Comic::where('collection_id', $collection_id)->take(4)->get()->load(['collection', 'tag']);
+        return response()->json($comics);
+    }
+
     public function create()
     {
         return Inertia::render('Comic/CreateComic', ['comics' => Comic::all(), 'tags' => Tag::all(), 'collections' => Collection::all()]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         try{
@@ -65,37 +69,18 @@ class ComicController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $comic = Comic::where('id', $id)->get();
+        $comic = Comic::where('id', $id)->get()->load(['collection', 'tag']);
 
         return response()->json($comic);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try{
@@ -123,12 +108,6 @@ class ComicController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $comic = Comic::find($id);
