@@ -17,10 +17,26 @@ class TagSeeder extends Seeder
     {
         DB::table('tags')->insert([
             'tag' => 'Ciencia Ficción',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('tags')->insert([
+            'tag' => 'Seinen',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('tags')->insert([
+            'tag' => 'Acción',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
 
         DB::table('tags')->insert([
             'tag' => 'Romance',
-        ]);
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);        
     }
 }
